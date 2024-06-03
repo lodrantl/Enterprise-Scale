@@ -53,7 +53,7 @@
               {
                 "not": {
                   "field": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/remoteVirtualNetwork.id",
-                  "in": "[[parameters('allowedVnets')]"
+                  "in": "[parameters('allowedVnets')]"
                 }
               }
             ]
@@ -81,7 +81,7 @@
         ]
       },
       "then": {
-        "effect": "[[parameters('effect')]"
+        "effect": "[parameters('effect')]"
       }
     }
   }
