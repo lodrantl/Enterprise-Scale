@@ -65,16 +65,16 @@
                 "equals": "Microsoft.Network/virtualNetworks"
               },
               {
-                "not": {
-                  "field": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings[*].remoteVirtualNetwork.id",
-                  "in": "[[parameters('allowedVnets')]"
-                }
-              },
-              {
-                "not": {
-                  "field": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings[*].remoteVirtualNetwork.id",
-                  "exists": false
-                }
+                "count": {
+                  "field": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings[*]",
+                  "where": {
+                    "not": {
+                      "field": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings[*].remoteVirtualNetwork.id",
+                      "in": "[parameters('allowedVnets')]"
+                    }
+                  }
+                },
+                "notEquals": 0
               }
             ]
           }
